@@ -155,4 +155,10 @@ Follow the 30-day plan to complete the app by Day 30.
 - **Day 1**: Planned frontend folder structure and UI requirements.
 - **Day 2**: Initialized Vite project, installed dependencies, set up README.
 - **Day 3**: Set up React Router, created placeholder sidebar + navbar UI, planned backend structure.
+### Day 4: Setup
+- Initialized Node.js project with Express, MongoDB, Socket.IO, and JWT.
+- Set up folder structure for config, controllers, models, routes, middleware, sockets, and utils.
+- Configured MongoDB connection and basic server.
+- Created placeholder User model and auth routes.
+- Pushed to GitHub with initial commit.
 
