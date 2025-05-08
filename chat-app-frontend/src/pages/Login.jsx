@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Login() {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -19,16 +20,20 @@ function Login() {
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
     } else {
-      setErrors({});
-      // Placeholder for API call
-      console.log('Login data:', formData);
-      navigate('/chat'); // Redirect to chat page on success
+      try {
+        const res = await axios.post('http://localhost:5000/api/auth/login', formData);
+        localStorage.setItem('token', res.data.token);
+        setErrors({});
+        navigate('/chat');
+      } catch (error) {
+        setErrors({ api: error.response?.data?.message || 'Login failed' });
+      }
     }
   };
 
@@ -36,6 +41,7 @@ function Login() {
     <div className="flex items-center justify-center h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center">Login</h1>
+        {errors.api && <p className="text-red-500 text-sm mb-4">{errors.api}</p>}
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-gray-700 mb-2" htmlFor="email">
@@ -86,4 +92,5 @@ function Login() {
     </div>
   );
 }
+
 export default Login;

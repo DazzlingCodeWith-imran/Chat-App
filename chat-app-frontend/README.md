@@ -161,4 +161,12 @@ Follow the 30-day plan to complete the app by Day 30.
 - Configured MongoDB connection and basic server.
 - Created placeholder User model and auth routes.
 - Pushed to GitHub with initial commit.
-
+## Day 5
+- Built Chat page UI with message list and input form.
+- Integrated Socket.io client for real-time messaging.
+- Styled chat bubbles with Tailwind CSS.
+- Tested locally with local state.
+## Day 5/6
+- Backend: Added signup/login APIs with JWT and password hashing.
+- Backend: Connected MongoDB and tested APIs with Postman.
+- Frontend: Integrated Login form with backend API.
